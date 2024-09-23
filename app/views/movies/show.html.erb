@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+<div style="border: 1px solid #ccc; padding: 20px; background-color: #f9f9f9;">
+  <%= render @movie %>
+</div>
 
 <div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+  <%= link_to "Edit this movie", edit_movie_path(@movie), style: "color: #2980b9; font-weight: bold;" %> |
+  <%= link_to "Back to Movies", movies_path, style: "color: #2980b9; font-weight: bold;" %>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+  <%= button_to "Destroy this movie", @movie, method: :delete, style: "color: red; font-weight: bold;" %>
 </div>
