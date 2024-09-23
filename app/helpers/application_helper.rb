@@ -1,6 +1,10 @@
 module ApplicationHelper
     def toggle_sort(column)
-        current_direction = params[:direction] == "asc" ? "desc" : "asc"
-        current_direction
+        if params[:sort] == column && params[:direction] == "asc"
+            "desc"
+        else
+            "asc"
+        end
     end
+
 end
