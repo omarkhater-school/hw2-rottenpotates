@@ -3,10 +3,14 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @sort = params[:sort] || "title"  # Default sort by title
-    @direction = params[:direction] || "asc"  # Default direction
+    session[:sort] = params[:sort] if params[:sort].present?
+    session[:direction] = params[:direction] if params[:direction].present?
+    
+    @sort = session[:sort] || "title"  # Default sort by title
+    @direction = session[:direction] || "asc"  # Default direction
     @movies = Movie.order("#{@sort} #{@direction}").all
   end
+
 
 
   # GET /movies/1 or /movies/1.json
@@ -35,6 +39,8 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+    session.delete(:sort)
+    session.delete(:direction)
   end
 
   # PATCH/PUT /movies/1 or /movies/1.json
@@ -48,6 +54,8 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
+    session.delete(:sort)
+    session.delete(:direction)
   end
 
   # DELETE /movies/1 or /movies/1.json
@@ -58,6 +66,8 @@ class MoviesController < ApplicationController
       format.html { redirect_to movies_path, status: :see_other, notice: "Movie was successfully destroyed." }
       format.json { head :no_content }
     end
+    session.delete(:sort)
+    session.delete(:direction)
   end
 
   private
@@ -70,4 +80,5 @@ class MoviesController < ApplicationController
     def movie_params
       params.require(:movie).permit(:title, :rating, :description, :release_date)
     end
+    
 end

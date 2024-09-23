@@ -34,9 +34,9 @@
           <td style="border: 1px solid #ddd; padding: 8px;"><%= movie.rating %></td>
           <td style="border: 1px solid #ddd; padding: 8px;"><%= movie.release_date %></td>
           <td style="border: 1px solid #ddd; padding: 8px;">
-            <%= link_to "Show", movie %>
-            <%= link_to "Edit", edit_movie_path(movie) %>
-            <%= link_to "Delete", movie, method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "Show", movie, params: { sort: @sort, direction: @direction } %>
+            <%= link_to "Edit", edit_movie_path(movie, sort: @sort, direction: @direction) %>
+            <%= link_to "Delete", movie, method: :delete, data: { confirm: "Are you sure?" }, params: { sort: @sort, direction: @direction } %>
           </td>
         </tr>
       <% end %>

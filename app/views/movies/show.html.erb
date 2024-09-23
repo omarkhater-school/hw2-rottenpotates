@@ -5,8 +5,8 @@
 </div>
 
 <div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie), style: "color: #2980b9; font-weight: bold;" %> |
-  <%= link_to "Back to Movies", movies_path, style: "color: #2980b9; font-weight: bold;" %>
+  <%= link_to "Edit this movie", edit_movie_path(@movie, sort: @sort, direction: @direction), style: "color: #2980b9; font-weight: bold;" %> |
+  <%= link_to "Back to Movies", movies_path(sort: @sort, direction: @direction), style: "color: #2980b9; font-weight: bold;" %>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete, style: "color: red; font-weight: bold;" %>
+  <%= button_to "Destroy this movie",@movie, method: :delete, params: { sort: @sort, direction: @direction }, style: "color: red; font-weight: bold;" %>
 </div>
