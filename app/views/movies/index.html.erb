@@ -2,35 +2,38 @@
 
 <% content_for :title, "Movies" %>
 
-<h1>Movies</h1>
+<h1 style="color: #2c3e50;">Movies</h1>
 
-<div id="movies">
-  <table>
+<div id="movies" style="border: 1px solid #ccc; padding: 20px; background-color: #f9f9f9;">
+  <table style="width: 100%; border-collapse: collapse;">
     <thead>
       <tr>
-        <th style="<%= 'background-color: lightblue;' if @sort == 'title' && @direction == 'asc' %>
-                    <%= 'background-color: lightcoral;' if @sort == 'title' && @direction == 'desc' %>">
+        <th style="padding: 8px; text-align: left;
+            <%= 'background-color: lightblue;' if @sort == 'title' && @direction == 'asc' %>
+            <%= 'background-color: lightcoral;' if @sort == 'title' && @direction == 'desc' %>">
           <%= link_to "Title #{sorted_indicator('title', @sort, @direction)}", movies_path(sort: "title", direction: toggle_sort("title")) %>
         </th>
-        <th style="<%= 'background-color: lightblue;' if @sort == 'rating' && @direction == 'asc' %>
-                    <%= 'background-color: lightcoral;' if @sort == 'rating' && @direction == 'desc' %>">
+        <th style="padding: 8px; text-align: left;
+            <%= 'background-color: lightblue;' if @sort == 'rating' && @direction == 'asc' %>
+            <%= 'background-color: lightcoral;' if @sort == 'rating' && @direction == 'desc' %>">
           <%= link_to "Rating #{sorted_indicator('rating', @sort, @direction)}", movies_path(sort: "rating", direction: toggle_sort("rating")) %>
         </th>
-        <th style="<%= 'background-color: lightblue;' if @sort == 'release_date' && @direction == 'asc' %>
-                    <%= 'background-color: lightcoral;' if @sort == 'release_date' && @direction == 'desc' %>">
+        <th style="padding: 8px; text-align: left;
+            <%= 'background-color: lightblue;' if @sort == 'release_date' && @direction == 'asc' %>
+            <%= 'background-color: lightcoral;' if @sort == 'release_date' && @direction == 'desc' %>">
           <%= link_to "Release Date #{sorted_indicator('release_date', @sort, @direction)}", movies_path(sort: "release_date", direction: toggle_sort("release_date")) %>
         </th>
-        <th>Actions</th>
+        <th style="padding: 8px; text-align: left;">Actions</th>
       </tr>
     </thead>
     
     <tbody>
       <% @movies.each do |movie| %>
         <tr>
-          <td><%= movie.title %></td>
-          <td><%= movie.rating %></td>
-          <td><%= movie.release_date %></td>
-          <td>
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= movie.title %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= movie.rating %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;"><%= movie.release_date %></td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
             <%= link_to "Show", movie %>
             <%= link_to "Edit", edit_movie_path(movie) %>
             <%= link_to "Delete", movie, method: :delete, data: { confirm: "Are you sure?" } %>
@@ -41,7 +44,9 @@
     
     <tfoot>
       <tr>
-        <td colspan="4"><%= link_to "New movie", new_movie_path %></td>
+        <td colspan="4" style="text-align: center;">
+          <%= link_to "New Movie", new_movie_path, style: "font-weight: bold;" %>
+        </td>
       </tr>
     </tfoot>
   </table>
