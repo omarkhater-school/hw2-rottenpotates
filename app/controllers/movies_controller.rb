@@ -39,8 +39,7 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
-    session.delete(:sort)
-    session.delete(:direction)
+
   end
 
   # PATCH/PUT /movies/1 or /movies/1.json
@@ -54,8 +53,7 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
-    session.delete(:sort)
-    session.delete(:direction)
+
   end
 
   # DELETE /movies/1 or /movies/1.json
@@ -66,8 +64,7 @@ class MoviesController < ApplicationController
       format.html { redirect_to movies_path, status: :see_other, notice: "Movie was successfully destroyed." }
       format.json { head :no_content }
     end
-    session.delete(:sort)
-    session.delete(:direction)
+
   end
 
   private
