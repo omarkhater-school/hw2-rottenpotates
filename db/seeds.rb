@@ -10,6 +10,12 @@
 
 # Seed the RottenPotatoes DB with some movies.
 more_movies = [
+{:title => 'Ex1', :rating => 'G',
+    :release_date => '16-Apr-1988'}, 
+    {:title => 'Ex2', :rating => 'G',
+    :release_date => '16-Apr-1988'},
+    {:title => 'Ex3', :rating => 'G',
+    :release_date => '16-Apr-1988'},
   {:title => 'My Neighbor Totoro', :rating => 'G',
     :release_date => '16-Apr-1988'},
   {:title => 'Green Book', :rating => 'PG-13',
@@ -24,4 +30,6 @@ more_movies = [
 
 more_movies.each do |movie|
   Movie.create!(movie)
+  
+
 end
